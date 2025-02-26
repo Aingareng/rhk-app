@@ -31,7 +31,11 @@ export default function RhkPage() {
             ${itemIds.length > 0 ? "opacity-100 scale-100" : ""}`}
           >
             <p className="text-sm font-semibold">Total Poin {totalPoin}</p>
-            <Link to="/activity" className="btn btn-primary" role="button">
+            <Link
+              to={totalPoin > 32 ? "/activity" : "#"}
+              className="btn btn-primary"
+              role="button"
+            >
               Proses
             </Link>
           </div>

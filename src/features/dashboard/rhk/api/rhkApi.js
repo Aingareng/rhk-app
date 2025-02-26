@@ -1,7 +1,7 @@
-import { api } from "../../../shared/utils/api";
+import { api } from "../../../../shared/utils/api";
 
 export async function getRhk(params) {
-  const response = await api.get("/rhk", params);
+  const response = await api.get("/rekomendasi", params);
 
   if (response.status !== 200) {
     return [];

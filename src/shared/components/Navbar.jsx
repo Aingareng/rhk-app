@@ -7,7 +7,7 @@ function Navbar() {
     <nav className="navbar bg-base-100 shadow">
       <div className="flex-1">
         <Link to="/" className="btn btn-ghost text-xl">
-          Nama Aplikasi ?
+          SPK Guru
         </Link>
       </div>
       <div className="flex-none">
@@ -19,7 +19,7 @@ function Navbar() {
             className="btn btn-ghost btn-circle avatar placeholder"
           >
             <div className="bg-secondary text-neutral-content w-12 rounded-full">
-              <span>SY</span>
+              <span>A</span>
             </div>
           </div>
           <ul

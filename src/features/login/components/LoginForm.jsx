@@ -8,15 +8,19 @@ import useLogin from "../hooks/useLogin";
 export default function LoginForm() {
   const { userLogin } = useLogin();
   function handleSubmit(prevState, formData) {
-    const emailInput = formData.get("email");
+    const userInput = formData.get("username");
     const passwordInput = formData.get("password");
 
     let errors = [];
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailInput || !emailRegex.test(emailInput)) {
-      errors.push("Format email tidak valid!");
+    if (!userInput) {
+      errors.push("Username tidak boleh kosong!");
+    } else if (!/^[a-zA-Z0-9._]+$/.test(userInput)) {
+      errors.push(
+        "Username hanya boleh terdiri dari huruf, angka, titik (.), dan underscore (_)."
+      );
     }
+
     if (!passwordInput || passwordInput.length < 6) {
       errors.push("Kata sandi harus minimal 6 karakter!");
     }
@@ -25,13 +29,13 @@ export default function LoginForm() {
       return {
         errors,
         enteredValue: {
-          email: emailInput,
+          username: userInput,
           password: passwordInput,
         },
       };
     }
     userLogin({
-      email: emailInput,
+      email: userInput,
       password: passwordInput,
     });
     return { errors: null };
@@ -43,11 +47,11 @@ export default function LoginForm() {
     <Form action={formAction} className="grid grid-cols-1 gap-5">
       <Label labelType="form-control" leftLabel="Alamat Email">
         <Input
-          type="email"
-          name="email"
+          type="text"
+          name="username"
           className="input input-bordered w-full"
-          placeholder="Cth: John@example.com"
-          defaultValue={formState.enteredValue?.email}
+          placeholder="Masukan Nama Lengkap"
+          defaultValue={formState.enteredValue?.username}
         />
       </Label>
       <Label labelType="form-control" leftLabel="Kata Sandi">

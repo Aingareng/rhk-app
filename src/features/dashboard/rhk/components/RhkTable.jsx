@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { useLocalStorage } from "../../../../shared/hooks/useLocalStorage";
 import { useEffect } from "react";
+// import useRhk from "../hooks/useRhk";
 import data from "../../../../shared/libs/dummy";
 
 export default function RhkTable({ onSelecttedIds }) {
@@ -8,6 +9,12 @@ export default function RhkTable({ onSelecttedIds }) {
     "selectedCheckboxes",
     []
   );
+
+  // const { rhk, error } = useRhk();
+  // console.log("🚀 ~ RhkTable ~ rhk:", rhk);
+  // console.log("🚀 ~ RhkTable ~ error:", error);
+
+  // const data = rhk || [];
 
   const isAllSelected = selectedIds.length === data.length;
 
