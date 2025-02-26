@@ -36,11 +36,7 @@ export default function RkPage() {
 
           {rhkData.length > 0 && (
             <div className="flex justify-end">
-              <Button
-                className={`btn btn-primary w-max rounded-lg ${
-                  rhkData.length === 0 ? "" : "cursor-not-allowed"
-                }`}
-              >
+              <Button className="btn btn-primary w-max rounded-lg">
                 Kirim
               </Button>
             </div>
