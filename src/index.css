@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  background-color: oklch(var(--pc));
+  /* display: flex;
+  place-items: center; */
+  min-width: 320px;
+  min-height: 100vh;
+}
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: oklch(var(--s));
+    /* oklch(var(--p)); */
+  }
+}
