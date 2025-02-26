@@ -12,6 +12,6 @@ export default function useRk() {
   });
 
   return {
-    createEmployee: createMutation.mutate,
+    createRk: createMutation.mutate,
   };
 }
