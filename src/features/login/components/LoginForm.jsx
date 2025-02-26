@@ -4,8 +4,10 @@ import Form from "../../../shared/components/Form";
 import Input from "../../../shared/components/Input";
 import Label from "../../../shared/components/Label";
 import useLogin from "../hooks/useLogin";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginForm() {
+  const navigate = useNavigate();
   const { userLogin } = useLogin();
   function handleSubmit(prevState, formData) {
     const userInput = formData.get("username");
@@ -15,10 +17,6 @@ export default function LoginForm() {
 
     if (!userInput) {
       errors.push("Username tidak boleh kosong!");
-    } else if (!/^[a-zA-Z0-9._]+$/.test(userInput)) {
-      errors.push(
-        "Username hanya boleh terdiri dari huruf, angka, titik (.), dan underscore (_)."
-      );
     }
 
     if (!passwordInput || passwordInput.length < 6) {
@@ -38,6 +36,8 @@ export default function LoginForm() {
       email: userInput,
       password: passwordInput,
     });
+    localStorage.setItem("userIsLogin", true);
+    navigate("/");
     return { errors: null };
   }
 
@@ -45,7 +45,7 @@ export default function LoginForm() {
 
   return (
     <Form action={formAction} className="grid grid-cols-1 gap-5">
-      <Label labelType="form-control" leftLabel="Alamat Email">
+      <Label labelType="form-control" leftLabel="Nama Lengkap">
         <Input
           type="text"
           name="username"
